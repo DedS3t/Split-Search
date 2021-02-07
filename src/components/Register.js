@@ -1,5 +1,7 @@
+
 import React, { Component } from 'react'
 import { auth } from '../helpers/auth'
+import "../style/App.css"
 
 function setErrorMsg(error) {
   return {
@@ -17,8 +19,9 @@ export default class Register extends Component {
   render () {
     return (
       <div className="col-sm-6 col-sm-offset-3">
+        
+        <form className="formRegister" onSubmit={this.handleSubmit}>
         <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Email</label>
             <input className="form-control" ref={(email) => this.email = email} placeholder="Email"/>

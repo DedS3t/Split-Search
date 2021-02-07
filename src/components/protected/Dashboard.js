@@ -2,6 +2,10 @@ import React, { Component,useState } from 'react'
 import {storage,firebaseRef} from '../../config/constants'
 import axios from 'axios';
 import FileUploader from "react-firebase-file-uploader";
+import Job from "./job"
+import 'bootstrap/dist/css/bootstrap.css'
+import '../../style/App.css'
+
 const request = require('request');
 
 class ProfilePage extends Component {
@@ -42,25 +46,27 @@ class ProfilePage extends Component {
  
   render() {
     return (
-      <div>
-        <form>
-          
-          <FileUploader
-            accept="*"
-            name="avatar"
-            randomizeFilename
-            storageRef={storage.ref(`/resumes/${this.state.uid}`)}
-            onUploadStart={this.handleUploadStart}
-            onUploadError={this.handleUploadError}
-            onUploadSuccess={this.handleUploadSuccess}
-            onProgress={this.handleProgress}
-          />
+      <div className="wrapper">
+        <div className="container">
+          <form>
+            
+            <FileUploader
+              accept="*"
+              name="avatar"
+              randomizeFilename
+              storageRef={storage.ref(`/resumes/${this.state.uid}`)}
+              onUploadStart={this.handleUploadStart}
+              onUploadError={this.handleUploadError}
+              onUploadSuccess={this.handleUploadSuccess}
+              onProgress={this.handleProgress}
+            />
 
-          {this.state.jobs==[] ? null:this.state.jobs.map(job=><h1 key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}>{job.title}</h1>)}
+            {this.state.jobs==[] ? <p>No Jobs Currently</p>:this.state.jobs.map(job=><Job key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)} job={job} />)}
 
-        </form>
+          </form>
 
 
+        </div>
       </div>
     );
   }

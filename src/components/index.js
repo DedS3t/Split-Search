@@ -60,7 +60,7 @@ export default class App extends Component {
           <nav className="navbar navbar-default navbar-static-top">
             <div className="container">
               <div className="navbar-header">
-                <Link to="/" className="navbar-brand">Search Splitz</Link>
+                <Link to="/" className="navbar-brand">Split Search</Link>
               </div>
               <ul className="nav navbar-nav pull-right">
                 <li>
@@ -85,8 +85,7 @@ export default class App extends Component {
               </ul>
             </div>
           </nav>
-          <div className="container">
-            <div className="row">
+
               <Switch>
                 <Route path='/' exact component={Home} />
                 <PublicRoute authed={this.state.authed} path='/login' component={Login} />
@@ -95,8 +94,7 @@ export default class App extends Component {
                 <Route render={() => <h3>No Match</h3>} />
               </Switch>
             </div>
-          </div>
-        </div>
+
       </BrowserRouter>
     );
   }
